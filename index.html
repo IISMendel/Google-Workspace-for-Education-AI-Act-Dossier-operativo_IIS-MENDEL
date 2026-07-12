@@ -356,6 +356,77 @@
     padding-left: 12px;
   }
 
+  /* ── ACCORDION ── */
+  .accordion { margin: 20px 0; }
+  .acc-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .acc-header:hover { background: var(--surface2); }
+  .acc-title-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .acc-title { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--white); font-size: 1rem; }
+  .acc-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .acc-badge.admin { color: var(--gold-light); background: var(--gold-dim); }
+  .acc-badge.collettivo { color: #a9cdea; background: rgba(111,168,216,0.14); }
+  .acc-chevron {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    transition: transform .25s ease;
+    flex-shrink: 0;
+  }
+  .acc-item.open .acc-chevron { transform: rotate(180deg); color: var(--gold-light); }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    padding: 0 22px;
+  }
+  .acc-item.open .acc-body { padding: 0 22px 20px; }
+  .acc-body ol { margin: 0; padding-left: 0; list-style: none; counter-reset: acc-step; }
+  .acc-body ol li {
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .acc-body ol li::before {
+    counter-increment: acc-step;
+    content: counter(acc-step);
+    position: absolute;
+    left: 0; top: -1px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #0a0f0b;
@@ -405,6 +476,7 @@
     <a href="#prompt">3. Linee guida prompt</a>
     <a href="#roadmap">4. Tabella di marcia</a>
     <a href="#stato">Stato di attuazione</a>
+    <a href="#comefare">Come fare, passo passo</a>
     <a href="#formazione">5. Formazione</a>
     <a href="#pnrr">6. Finanziamenti</a>
     <a href="#sintesi">7. Sintesi</a>
@@ -573,6 +645,128 @@
     </div>
   </section>
 
+  <section id="comefare">
+    <div class="eyebrow">Dalla tabella alla pratica</div>
+    <h2>Come fare, passo passo</h2>
+    <p class="muted">Ogni voce indica anche chi se ne occupa: <span class="acc-badge admin" style="text-transform:none;">Amministratore Workspace</span> per i punti che richiedono accesso alla Console Admin, <span class="acc-badge collettivo" style="text-transform:none;">Collettivo</span> per i punti organizzativi che coinvolgono Dirigenza, DPO o l'intero personale.</p>
+
+    <div class="accordion" id="acc-comefare">
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">1. Mappatura IA e competenze</span>
+            <span class="acc-badge collettivo">Collettivo</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Vai alla pagina tematica USR Lombardia sull'IA (link in "Fonti ufficiali") e scarica i template di ricognizione.</li>
+            <li>Per i docenti: usa la versione Google Moduli/Microsoft Forms — puoi importarla così com'è o adattarla ai vostri strumenti reali (Gemini, ChatGPT, ecc.).</li>
+            <li>Per DSGA/ATA: usa la versione documentale (Word/PDF) proposta dall'USR.</li>
+            <li>Distribuisci i moduli a inizio anno (es. in un collegio docenti o via email istituzionale con scadenza).</li>
+            <li>Raccogli le risposte e individua chi, in base alle risposte, usa o intende adottare sistemi IA nella didattica/organizzazione — sono questi i "deployer" che servono poi per il punto 3.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">2. Sorveglianza umana / DPIA</span>
+            <span class="acc-badge collettivo">Collettivo</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Contatta il DPO/RPD d'istituto (è un obbligo GDPR, quindi la titolarità del documento è sua/vostra insieme).</li>
+            <li>Chiedi se la scuola ha già un modello DPIA usato per altri trattamenti a rischio (es. videosorveglianza) — spesso c'è già un template da riadattare.</li>
+            <li>Elenca i trattamenti IA da valutare (es. uso di Gemini con elaborati studenti, strumenti di correzione automatica).</li>
+            <li>Per ciascuno: descrivi il trattamento, valuta il rischio per gli interessati, individua le misure di mitigazione (es. anonimizzazione prompt).</li>
+            <li>Fai riferimento alle Linee Guida MIM e al Vademecum del Garante per la struttura del documento.</li>
+            <li>Fai approvare/firmare il documento dalla Dirigente.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">3. AI Literacy — formazione (art. 4 AI Act)</span>
+            <span class="acc-badge collettivo">Collettivo</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Usa i risultati della mappatura (punto 1) per identificare chi è realmente "deployer".</li>
+            <li>Per quel personale, individua un percorso proporzionato al ruolo (non serve un corso lungo/certificato per tutti).</li>
+            <li>Se vuoi finanziamento PNRR: cerca corsi su scuolafutura.pubblica.istruzione.it (i corsi tracciati lì possono rientrare in eventuali bandi).</li>
+            <li>Se fai formazione interna: tieni un registro con data, contenuti, durata e firme di presenza — è quello che serve per "documentare" l'adempimento, anche senza piattaforme esterne.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">4. Trasparenza sui contenuti generati con IA</span>
+            <span class="acc-badge collettivo">Collettivo</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Decidete internamente quali materiali considerare "generati o modificati con IA" (slide, immagini, testi, comunicazioni).</li>
+            <li>Scegliete un formato standard di segnalazione (es. una riga in calce: "Contenuto realizzato con il supporto di IA generativa").</li>
+            <li>Inseritelo nei template istituzionali già in uso (intestazioni Word, master delle slide).</li>
+            <li>Comunicate la prassi al personale (es. in una circolare interna) così viene applicata in modo uniforme, non lasciata alla discrezione del singolo.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">5. Igiene delle integrazioni di terze parti</span>
+            <span class="acc-badge admin">Amministratore Workspace</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Accedi a admin.google.com con l'account amministratore.</li>
+            <li>Vai su Sicurezza › Controllo accesso ai dati › Controllo accessi API (il nome esatto del sottomenu può variare leggermente).</li>
+            <li>Scorri l'elenco delle app con accesso OAuth al dominio.</li>
+            <li>Per ciascuna, verifica: è ancora usata? È di un fornitore affidabile? Ha permessi più ampi del necessario?</li>
+            <li>Revoca l'accesso alle app non riconosciute, non più usate, o con permessi eccessivi.</li>
+            <li>Segna la data del controllo e imposta un promemoria ricorrente (consigliato: ogni 6 mesi) per ripeterlo.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-title-group">
+            <span class="acc-title">6. Consenso genitori — Servizi Aggiuntivi Google</span>
+            <span class="acc-badge admin">Amministratore Workspace</span>
+          </div>
+          <span class="acc-chevron">▾</span>
+        </div>
+        <div class="acc-body">
+          <ol>
+            <li>Vai su admin.google.com › App › Servizi aggiuntivi di Google.</li>
+            <li>Controlla, per ogni servizio elencato, lo stato del consenso (visibile in una colonna dedicata).</li>
+            <li>Se risulta "Richiede conferma": verifica di avere raccolto le firme di consenso dei genitori (modulo cartaceo o digitale, come già fate per altri strumenti).</li>
+            <li>Una volta verificato, clicca "Conferma consenso" per quel servizio.</li>
+            <li>Il consenso resta valido 12 mesi: ripeti la procedura a ogni inizio di anno scolastico.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="formazione">
     <div class="eyebrow">Sezione 5</div>
     <h2>Percorso formativo proposto</h2>
@@ -709,6 +903,21 @@
     Copyright &copy; 2026 IIS Gregorio Mendel — Via Ferrazzi 15, 20035 Villa Cortese (MI).</p>
   </div>
 </footer>
+
+<script>
+  function toggleAcc(header) {
+    const item = header.closest('.acc-item');
+    const body = header.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+    if (isOpen) {
+      body.style.maxHeight = null;
+      item.classList.remove('open');
+    } else {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+</script>
 
 </body>
 </html>
