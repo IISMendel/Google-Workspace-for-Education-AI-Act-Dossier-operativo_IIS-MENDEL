@@ -260,6 +260,16 @@
   }
   .row-card.immediate { border-left: 3px solid var(--amber); }
   .row-card.gw { border-left: 3px solid #6fa8d8; }
+  .row-card .who {
+    grid-column: 2;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    font-size: 0.85rem;
+    color: var(--gold-light);
+  }
+  .row-card .who::before { content: '👤 '; }
+  @media (max-width: 620px) { .row-card .who { grid-column: 1; } }
   .tag.gw { color: #a9cdea; background: rgba(111,168,216,0.14); }
 
   .svc-grid, .form-grid {
@@ -571,24 +581,28 @@
         <div class="req">Mappatura IA e competenze</div>
         <div class="body">Censire i sistemi di IA in uso a scuola; rilevare il livello di competenza di docenti e ATA — raccomandazione esplicita della nota USR Lombardia.</div>
         <div class="where">Template di ricognizione USR Lombardia (Google Moduli / Microsoft Forms)</div>
+        <div class="who">Team Digitale (distribuzione) + tutto il personale (risposta)</div>
       </div>
       <div class="row-card">
         <span class="tag">Entro inizio A.S. 2026/27</span>
         <div class="req">Sorveglianza umana (DPIA)</div>
         <div class="body">Aggiornare la valutazione d'impatto privacy con il supporto del DPO d'istituto (obbligo GDPR art. 35).</div>
         <div class="where">Modello DPIA coordinato con Linee guida MIM e Vademecum del Garante</div>
+        <div class="who">DPO/RPD + Dirigente (titolare)</div>
       </div>
       <div class="row-card">
         <span class="tag">Obbligo già attivo dal 2/2/2025</span>
         <div class="req">AI Literacy (art. 4 AI Act)</div>
         <div class="body">Programmare e documentare la formazione solo per il personale che usa/adotta sistemi IA ("deployer").</div>
         <div class="where">Piattaforma Scuola Futura (PNRR) o registri di formazione interna</div>
+        <div class="who">Dirigenza + Team Digitale</div>
       </div>
       <div class="row-card">
         <span class="tag">2 agosto 2026</span>
         <div class="req">Trasparenza (art. 50 AI Act)</div>
         <div class="body">Segnalare visivamente i contenuti didattici o comunicativi generati o modificati con IA.</div>
         <div class="where">Indicatori visivi, disclaimer, loghi di provenienza sui materiali pubblicati</div>
+        <div class="who">Tutto il personale (chi produce contenuti)</div>
       </div>
     </div>
 
@@ -601,12 +615,14 @@
         <div class="req">Igiene delle integrazioni di terze parti</div>
         <div class="body">Verificare periodicamente le app con accesso OAuth al dominio e revocare quelle non più necessarie o non verificate (vedi caso Drift/Salesforce, ago. 2025).</div>
         <div class="where">Console Admin › Sicurezza › Controllo accessi API</div>
+        <div class="who">Amministratore Workspace</div>
       </div>
       <div class="row-card gw">
         <span class="tag gw">Da valutare</span>
         <div class="req">Consenso genitori — Servizi Aggiuntivi Google</div>
         <div class="body">Riconferma annuale prevista dai Termini di Servizio Google per gli Additional Services relativi ai minori (non da normativa italiana).</div>
         <div class="where">Console Admin › Applicazioni › Servizi aggiuntivi di Google</div>
+        <div class="who">Amministratore Workspace</div>
       </div>
     </div>
     <p class="muted" style="font-size:0.9rem; margin-top:14px;"><em>Nota tecnica: nei domini scuola, Google applica di default l'esperienza "under 18" a qualunque utente non esplicitamente marcato come maggiorenne — motivo per cui è comunque buona norma rendere esplicita l'etichetta su tutte le OU, come già fatto per l'IIS Mendel.</em></p>
