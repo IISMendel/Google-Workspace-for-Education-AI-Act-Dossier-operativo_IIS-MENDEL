@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Workspace &amp; AI Act — Dossier operativo | IIS Mendel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1410;
+    --surface: #171e18;
+    --surface2: #1e2820;
+    --border: #2a3a2c;
+    --gold: #c9a84c;
+    --gold-light: #e0c06a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --green-dark: #2d5a27;
+    --green-mid: #3a7a32;
+    --green-light: #5aab4e;
+    --text: #ece5d6;
+    --text-muted: #9bad9c;
+    --text-dim: #6c7f6d;
+    --white: #f7f2e8;
+    --amber: #d9a441;
+    --amber-bg: rgba(217,164,65,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold-dim); color: var(--gold-light); }
+
+  a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.35); transition: border-color .2s, color .2s; }
+  a:hover { color: var(--white); border-color: var(--white); }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(160deg, #0a1a0c 0%, #0f1e10 55%, #0d1a0e 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -70px; left: -70px;
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -90px; right: -50px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(45,90,39,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 32px 50px;
+    position: relative;
+    z-index: 1;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.32);
+    border-radius: 4px;
+    padding: 7px 16px;
+    margin-bottom: 26px;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    line-height: 1.18;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  h1 em { color: var(--gold-light); font-style: italic; }
+  .lede {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+    line-height: 1.7;
+  }
+
+  .reg-box {
+    margin-top: 34px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green-light);
+    border-radius: 6px;
+    padding: 20px 24px;
+    max-width: 62ch;
+  }
+  .reg-box strong { color: var(--white); }
+  .reg-box a { word-break: break-word; }
+  .reg-box .sub { color: var(--text-dim); font-size: 0.92rem; margin-top: 6px; display: block; }
+
+  /* ── NAV ── */
+  nav.toc {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15,20,16,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .toc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 0.88rem;
+  }
+  .toc-inner a {
+    color: var(--text-muted);
+    border-bottom: none;
+    white-space: nowrap;
+  }
+  .toc-inner a:hover { color: var(--gold-light); }
+
+  /* ── MAIN ── */
+  main { max-width: 900px; margin: 0 auto; padding: 56px 32px 40px; }
+
+  section { margin-bottom: 64px; scroll-margin-top: 74px; }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.85rem;
+    color: var(--white);
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin: 28px 0 12px;
+  }
+  p { margin-bottom: 16px; color: var(--text); }
+  p.muted { color: var(--text-muted); }
+
+  ul, ol { margin: 0 0 20px 0; padding-left: 0; list-style: none; }
+  li { position: relative; padding-left: 30px; margin-bottom: 12px; color: var(--text); }
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 12px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green-light);
+  }
+  ol { counter-reset: step; }
+  ol li { padding-left: 38px; }
+  ol li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0; top: -1px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  li strong { color: var(--white); }
+
+  /* ── CARDS / TABLES ── */
+  .card-table {
+    display: grid;
+    gap: 14px;
+    margin: 20px 0 8px;
+  }
+  .row-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 6px 22px;
+  }
+  .row-card .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    color: var(--gold-light);
+    background: var(--gold-dim);
+    border-radius: 4px;
+    padding: 4px 10px;
+    align-self: start;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .row-card .req { font-weight: 700; color: var(--white); grid-column: 2; font-size: 1.02rem; }
+  .row-card .body { grid-column: 2; color: var(--text-muted); font-size: 0.96rem; }
+  .row-card .where {
+    grid-column: 2;
+    margin-top: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--green-light);
+  }
+  @media (max-width: 620px) {
+    .row-card { grid-template-columns: 1fr; }
+    .row-card .req, .row-card .body, .row-card .where { grid-column: 1; }
+  }
+  .row-card.immediate { border-left: 3px solid var(--amber); }
+
+  .svc-grid, .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 20px 0;
+  }
+  @media (max-width: 620px) { .svc-grid, .form-grid { grid-template-columns: 1fr; } }
+  .svc-card, .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .svc-card h4, .form-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  .svc-card p, .form-card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 8px; }
+  .form-card .dur {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    background: var(--gold-dim);
+    border-radius: 4px;
+    padding: 2px 9px;
+    margin-bottom: 8px;
+  }
+  .form-card .dest { font-size: 0.85rem; color: var(--green-light); }
+
+  .warn-box {
+    background: var(--amber-bg);
+    border: 1px solid rgba(217,164,65,0.35);
+    border-left: 3px solid var(--amber);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+    color: var(--white);
+  }
+  .warn-box::before { content: '⚠ '; color: var(--amber); }
+
+  .summary-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 26px;
+  }
+  .summary-box li::before { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a0f0b;
+    border-top: 1px solid var(--border);
+    padding: 44px 32px 34px;
+    text-align: center;
+  }
+  footer .footer-inner { max-width: 700px; margin: 0 auto; }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  footer p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 6px; }
+  footer a { color: var(--text-muted); border-color: var(--text-dim); }
+  footer a:hover { color: var(--gold-light); border-color: var(--gold-light); }
+  .footer-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+  .footer-fine { font-size: 0.78rem; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="badge">A cura del Team Digitale dell'IIS Mendel</span>
+    <h1>Google Workspace &amp; <em>AI Act</em><br>Dossier operativo per l'IIS Mendel</h1>
+    <p class="lede">Tutto quello che serve alla scuola per essere in regola: inquadramento GDPR/ISO 42001, procedure di configurazione, tabella di marcia con le scadenze reali e i finanziamenti disponibili. Riferimenti normativi verificati a luglio 2026.</p>
+
+    <div class="reg-box">
+      <strong>Regolamento d'istituto già pubblicato.</strong> Il Regolamento per l'uso dell'Intelligenza Artificiale (v1.0) dell'IIS Mendel è online qui:<br>
+      <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a>
+      <span class="sub">Questo dossier ne è il supporto tecnico-operativo interno: non lo sostituisce.</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#gdpr">1. GDPR &amp; ISO 42001</a>
+    <a href="#console">2. Console Admin</a>
+    <a href="#prompt">3. Linee guida prompt</a>
+    <a href="#roadmap">4. Tabella di marcia</a>
+    <a href="#formazione">5. Formazione</a>
+    <a href="#pnrr">6. Finanziamenti</a>
+    <a href="#sintesi">7. Sintesi</a>
+    <a href="#fonti">Fonti ufficiali</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="gdpr">
+    <div class="eyebrow">Sezione 1</div>
+    <h2>Google Workspace sotto il profilo GDPR e ISO/IEC 42001</h2>
+    <p>Per i Servizi Principali (Core Services), Google garantisce che la scuola mantenga la proprietà dei Dati del Cliente e dei prompt inseriti, e che questi contenuti non vengano usati per addestrare modelli di IA generativa né per pubblicità.</p>
+    <p class="muted">Un punto di attenzione resta però la questione della sovranità dei dati: anche quando i dati sono ospitati in data center europei (Data Residency), la controllante di Google è un soggetto statunitense soggetto a normative come la Sezione 702 del FISA e l'Executive Order 12333, che permettono in teoria l'accesso da parte delle autorità USA senza che l'interessato ne sia informato. È per questo che alcune università e centri di ricerca europei valutano alternative self-hosted come Nextcloud; per una scuola secondaria italiana non è oggi un'alternativa realistica, ma è utile saperlo per rispondere a eventuali domande di famiglie o Garante.</p>
+    <p>A parziale mitigazione, Google ha certificato Google Cloud, Workspace e Gemini secondo lo standard <strong>ISO/IEC 42001</strong> (pubblicato dicembre 2023), che definisce i requisiti per un Sistema di Gestione dell'Intelligenza Artificiale (AIMS) basato sul modello Plan-Do-Check-Act.</p>
+
+    <h3>Servizi IA coperti dalla certificazione</h3>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <h4>Gemini for Workspace</h4>
+        <p>Assistente integrato in Gmail, Documenti, Fogli, Presentazioni, Meet e Vids.</p>
+        <p style="color:var(--green-light); font-size:0.85rem;">I prompt restano nel dominio della scuola e non addestrano modelli esterni.</p>
+      </div>
+      <div class="svc-card">
+        <h4>App Gemini (standalone)</h4>
+        <p>Interfaccia web/mobile per brainstorming e analisi documenti.</p>
+        <p style="color:var(--green-light); font-size:0.85rem;">Riservata a utenti maggiorenni con account istituzionale.</p>
+      </div>
+      <div class="svc-card">
+        <h4>Document AI</h4>
+        <p>Estrazione e classificazione di dati da documenti.</p>
+        <p style="color:var(--green-light); font-size:0.85rem;">Richiede licenza per maggiorenni; non inserire dati sensibili non anonimizzati.</p>
+      </div>
+      <div class="svc-card">
+        <h4>Speech-to-Text / Text-to-Speech</h4>
+        <p>Trascrizione e sintesi vocale multilingue.</p>
+        <p style="color:var(--green-light); font-size:0.85rem;">Utile per l'accessibilità; verificare la residenza dei dati.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="console">
+    <div class="eyebrow">Sezione 2</div>
+    <h2>Procedure tecniche in Console Admin</h2>
+
+    <h3>2.1 — Accesso in base all'età <span style="color:var(--amber); font-family:'DM Mono',monospace; font-size:0.75rem;">PRIORITÀ IMMEDIATA</span></h3>
+    <ol>
+      <li>Console di Amministrazione › Account › Impostazioni account › Impostazioni di accesso in base all'età.</li>
+      <li>Selezionare l'Unità Organizzativa (OU) radice, che contiene l'intero dominio dell'istituto.</li>
+      <li>Alla voce "Scegli un'etichetta dell'età", selezionare "Alcuni o tutti gli utenti hanno meno di 18 anni" e salvare.</li>
+      <li>Per il personale docente e ATA: selezionare la relativa OU, impostare "All users are 18 or older" e cliccare su "Sostituisci" (Override).</li>
+    </ol>
+
+    <h3>2.2 — Abilitazione di Gemini solo per il personale maggiorenne</h3>
+    <ol>
+      <li>Console Admin › Applicazioni › Servizi aggiuntivi di Google › Gemini: impostare lo stato su ON solo per le OU con utenti maggiorenni.</li>
+      <li>Per l'accesso a Gemini dentro Google Classroom: Generative AI › Gemini for Workspace › Feature access in Classroom, attivato solo per le OU dei docenti.</li>
+      <li>Gli utenti classificati come minorenni restano esclusi automaticamente, indipendentemente da questa configurazione.</li>
+      <li>Assegnazione licenze "Gemini Education": singolarmente dalla scheda utente, oppure in massa con caricamento CSV (colonna New Licenses).</li>
+    </ol>
+
+    <h3>2.3 — Riconferma annuale del consenso (servizi aggiuntivi minori)</h3>
+    <p class="muted">Da ripetere ogni anno, in apertura di A.S.: senza la riconferma, il sistema blocca automaticamente l'accesso ai servizi per gli studenti under 18.</p>
+    <ul>
+      <li><strong>"Richiede conferma":</strong> applicazione attiva ma accesso minori provvisorio → verificare la raccolta firme genitori e confermare.</li>
+      <li><strong>"Confermato":</strong> consenso valido per 12 mesi, nessuna azione richiesta fino al rinnovo.</li>
+      <li><strong>"Blocked for users under 18":</strong> termine scaduto senza riconferma → selezionare i servizi e confermare per ripristinare l'accesso.</li>
+    </ul>
+  </section>
+
+  <section id="prompt">
+    <div class="eyebrow">Sezione 3</div>
+    <h2>Linee guida pratiche per i prompt didattici</h2>
+    <p class="muted">Da comunicare a tutto il personale che usa IA generativa con dati di studenti o dell'istituto:</p>
+    <ul>
+      <li><strong>Anonimizzazione preventiva:</strong> prima di inserire un elaborato di uno studente in un modello IA (es. per correzione), rimuovere nomi, cognomi, riferimenti a luoghi, date di nascita o dettagli familiari.</li>
+      <li><strong>Dati sintetici:</strong> per esercitazioni di data science o programmazione, generare dataset sintetici anziché usare dati reali degli studenti.</li>
+      <li><strong>Scelta della piattaforma:</strong> svolgere le attività didattiche con IA solo dentro l'ambiente protetto di Google Workspace con licenza attiva, evitando chatbot commerciali gratuiti privi di tutela dei dati.</li>
+    </ul>
+  </section>
+
+  <section id="roadmap">
+    <div class="eyebrow">Sezione 4</div>
+    <h2>Tabella di marcia operativa</h2>
+    <p class="muted">Le priorità sono ordinate per scadenza, non per importanza: le voci "Immediato" restano le più urgenti a prescindere dalla data.</p>
+
+    <div class="card-table">
+      <div class="row-card immediate">
+        <span class="tag">Immediato</span>
+        <div class="req">Protezione dei minori</div>
+        <div class="body">Inibire l'accesso a Gemini per gli studenti minori di 18 anni con account scolastico.</div>
+        <div class="where">Console Admin › Account › Impostazioni di accesso in base all'età</div>
+      </div>
+      <div class="row-card immediate">
+        <span class="tag">Immediato</span>
+        <div class="req">Prevenzione data breach</div>
+        <div class="body">Revocare le integrazioni di terze parti non autorizzate o non verificate (vedi caso Drift/Salesforce, ago. 2025).</div>
+        <div class="where">Console Admin › Sicurezza › Controllo accessi API</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Entro inizio A.S. 2026/27</span>
+        <div class="req">Sorveglianza umana (DPIA)</div>
+        <div class="body">Aggiornare la valutazione d'impatto privacy con il supporto del DPO d'istituto.</div>
+        <div class="where">Modello DPIA coordinato con Linee guida MIM e Vademecum del Garante</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Settembre (avvio A.S.)</span>
+        <div class="req">Mappatura IA e competenze</div>
+        <div class="body">Censire i sistemi di IA in uso a scuola; rilevare il livello di competenza di docenti e ATA.</div>
+        <div class="where">Template di ricognizione USR Lombardia (Google Moduli / Microsoft Forms)</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Annuale (settembre)</span>
+        <div class="req">Consenso genitori under 18</div>
+        <div class="body">Raccogliere e riconfermare le autorizzazioni per i Servizi Aggiuntivi Google per gli studenti minorenni.</div>
+        <div class="where">Console Admin › Applicazioni › Servizi aggiuntivi di Google</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Obbligo già attivo dal 2/2/2025</span>
+        <div class="req">AI Literacy (art. 4 AI Act)</div>
+        <div class="body">Programmare e documentare la formazione solo per il personale che usa/adotta sistemi IA ("deployer").</div>
+        <div class="where">Piattaforma Scuola Futura (PNRR) o registri di formazione interna</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">2 agosto 2026</span>
+        <div class="req">Trasparenza (art. 50 AI Act)</div>
+        <div class="body">Segnalare visivamente i contenuti didattici o comunicativi generati o modificati con IA.</div>
+        <div class="where">Indicatori visivi, disclaimer, loghi di provenienza sui materiali pubblicati</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formazione">
+    <div class="eyebrow">Sezione 5</div>
+    <h2>Percorso formativo proposto</h2>
+    <p class="muted">Modello USR Lombardia, da strutturare dopo la ricognizione delle competenze, con moduli brevi e mirati per ruolo:</p>
+    <div class="form-grid">
+      <div class="form-card">
+        <span class="dur">~47 min</span>
+        <h4>IA &amp; Sicurezza nella scuola</h4>
+        <p>Gestione dei rischi informatici, phishing algoritmico, minimizzazione del dato nei prompt.</p>
+        <span class="dest">Docenti e ATA</span>
+      </div>
+      <div class="form-card">
+        <span class="dur">~35 min</span>
+        <h4>Utilizzo didattico dell'IA</h4>
+        <p>Progettazione di lezioni, prove di valutazione autentica, prevenzione del plagio.</p>
+        <span class="dest">Solo docenti</span>
+      </div>
+      <div class="form-card">
+        <span class="dur">~32 min</span>
+        <h4>Utilizzo amministrativo dell'IA</h4>
+        <p>Automazione dei flussi di segreteria, gestione sicura dei dati.</p>
+        <span class="dest">ATA e DSGA</span>
+      </div>
+      <div class="form-card">
+        <span class="dur">~37 min</span>
+        <h4>Governance dell'IA a scuola</h4>
+        <p>Responsabilità del dirigente, classificazione dei rischi, coordinamento con il DPO.</p>
+        <span class="dest">Dirigente e staff</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="pnrr">
+    <div class="eyebrow">Sezione 6</div>
+    <h2>Finanziamenti PNRR disponibili</h2>
+    <div class="warn-box">Il bando descritto sotto (avviso prot. 73226 del 27 marzo 2026, attuativo del DM 219/2025) aveva scadenza il 17 aprile 2026 ed è quindi già chiuso. Lo riportiamo per completezza informativa e come riferimento per eventuali bandi successivi con caratteristiche analoghe.</div>
+    <ul>
+      <li><strong>Dotazione:</strong> 100 milioni di euro complessivi (PNRR, Missione 4 Istruzione e Ricerca), fino a 50.000 € per singola istituzione scolastica, riserva del 40% per le regioni del Mezzogiorno.</li>
+      <li><strong>Requisito minimo:</strong> almeno 50 unità di personale (docenti e ATA) formate e certificate per progetto.</li>
+      <li><strong>Gestione:</strong> candidatura su piattaforma "Futura PNRR", rendicontazione obbligatoria su piattaforma "Scuola Futura".</li>
+      <li><strong>Nota:</strong> il Governo ha inoltre annunciato ulteriori 100 milioni di euro (giugno 2026) per la formazione dei docenti su uso critico di IA e social media, a completamento del quadro da 200 milioni complessivi — utile monitorare i prossimi avvisi MIM.</li>
+    </ul>
+  </section>
+
+  <section id="sintesi">
+    <div class="eyebrow">Sezione 7</div>
+    <h2>Note di sintesi</h2>
+    <div class="summary-box">
+      <ul>
+        <li>L'obbligo di AI Literacy (art. 4) è già attivo dal 2 febbraio 2025 e riguarda solo chi usa/adotta IA nella didattica o nell'organizzazione — non l'intero personale.</li>
+        <li>Il rinvio del Digital Omnibus (approvato dal Parlamento UE il 16 giugno 2026) sposta al 2 dicembre 2027 gli obblighi sui sistemi ad alto rischio (Allegato III, incluso il settore istruzione), ma non tocca gli obblighi già attivi di trasparenza (art. 50) né la parte pratica di configurazione di Google Workspace descritta sopra.</li>
+        <li>Per la mappatura IA e competenze, usare i template già predisposti dall'USR Lombardia (per DSGA/ATA in formato documentale; per i docenti via Google Moduli o Microsoft Forms).</li>
+        <li>Regolamento d'istituto di riferimento: <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="fonti">
+    <div class="eyebrow">Fonti ufficiali</div>
+    <h2>Fonti ufficiali</h2>
+    <div class="summary-box">
+      <ul>
+        <li><strong>Nota USR Lombardia, prot. n. 35264 del 02/07/2026</strong> — testo integrale in PDF:<br>
+        <a href="https://www.mim.gov.it/documents/9064803/10317495/m_pi.AOODRLO.REGISTRO+UFFICIALE%28U%29.0035264.02-07-2026.pdf/771b5beb-557c-ff6c-9cca-4bfaa88add65?t=1782994922234" target="_blank" rel="noopener">Scarica la nota (mim.gov.it)</a></li>
+        <li><strong>Pagina tematica USR Lombardia — Intelligenza Artificiale</strong>: riferimenti normativi e template di ricognizione competenze (Google Moduli / Microsoft Forms per i docenti, formato editabile per DSGA e ATA):<br>
+        <a href="https://www.mim.gov.it/web/usr-lombardia/intelligenza-artificiale" target="_blank" rel="noopener">mim.gov.it/web/usr-lombardia/intelligenza-artificiale</a></li>
+        <li><strong>Regolamento IA dell'IIS Mendel (v1.0)</strong>:<br>
+        <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">IIS Gregorio Mendel</div>
+    <p>Istituto di Istruzione Superiore Gregorio Mendel</p>
+    <p><strong>Via Ferrazzi 15 · 20035 Villa Cortese (MI)</strong></p>
+    <p>Dirigente Scolastica: <strong>Dott.ssa Cristina Gualtieri</strong></p>
+    <hr class="footer-divider">
+    <p>
+      <a href="https://www.agrariomendel.edu.it" target="_blank" rel="noopener">www.agrariomendel.edu.it</a>
+    </p>
+    <hr class="footer-divider">
+    <p class="footer-fine">Questa pagina appartiene all'IIS MENDEL – Villa Cortese (MI)<br>
+    Copyright &copy; 2026 IIS Gregorio Mendel — Via Ferrazzi 15, 20035 Villa Cortese (MI).</p>
+  </div>
+</footer>
+
+</body>
+</html>
