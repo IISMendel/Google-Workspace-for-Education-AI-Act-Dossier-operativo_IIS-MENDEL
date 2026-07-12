@@ -259,6 +259,8 @@
     .row-card .req, .row-card .body, .row-card .where { grid-column: 1; }
   }
   .row-card.immediate { border-left: 3px solid var(--amber); }
+  .row-card.gw { border-left: 3px solid #6fa8d8; }
+  .tag.gw { color: #a9cdea; background: rgba(111,168,216,0.14); }
 
   .svc-grid, .form-grid {
     display: grid;
@@ -324,6 +326,36 @@
   .status-list li.done::after { content: '✔'; color: var(--green-light); }
   .status-list li.progress::after { content: '◐'; color: var(--amber); }
 
+  .gloss-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 20px 0; }
+  .gloss-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+  .gloss-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--gold-light);
+    font-size: 1.08rem;
+    margin-bottom: 8px;
+  }
+  .gloss-card p { font-size: 0.95rem; color: var(--text); margin-bottom: 10px; }
+  .gloss-card .where {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--green-light);
+    margin-bottom: 8px;
+  }
+  .gloss-card .where::before { content: '📍 '; }
+  .gloss-card .example {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 12px;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #0a0f0b;
@@ -376,6 +408,7 @@
     <a href="#formazione">5. Formazione</a>
     <a href="#pnrr">6. Finanziamenti</a>
     <a href="#sintesi">7. Sintesi</a>
+    <a href="#glossario">Glossario</a>
     <a href="#fonti">Fonti ufficiali</a>
   </div>
 </nav>
@@ -457,38 +490,21 @@
   <section id="roadmap">
     <div class="eyebrow">Sezione 4</div>
     <h2>Tabella di marcia operativa</h2>
-    <p class="muted">Le priorità sono ordinate per scadenza, non per importanza: le voci "Immediato" restano le più urgenti a prescindere dalla data.</p>
+    <p class="muted">Divisa in due categorie ben distinte: da un lato gli obblighi normativi (AI Act, GDPR, nota USR), dall'altro le buone pratiche di amministrazione Google Workspace — consigliate ma non imposte da alcuna legge o nota ministeriale italiana.</p>
 
+    <h3>4a — Obblighi normativi</h3>
     <div class="card-table">
-      <div class="row-card immediate">
-        <span class="tag">Immediato</span>
-        <div class="req">Protezione dei minori</div>
-        <div class="body">Inibire l'accesso a Gemini per gli studenti minori di 18 anni con account scolastico.</div>
-        <div class="where">Console Admin › Account › Impostazioni di accesso in base all'età</div>
-      </div>
-      <div class="row-card immediate">
-        <span class="tag">Immediato</span>
-        <div class="req">Prevenzione data breach</div>
-        <div class="body">Revocare le integrazioni di terze parti non autorizzate o non verificate (vedi caso Drift/Salesforce, ago. 2025).</div>
-        <div class="where">Console Admin › Sicurezza › Controllo accessi API</div>
+      <div class="row-card">
+        <span class="tag">Settembre (avvio A.S.)</span>
+        <div class="req">Mappatura IA e competenze</div>
+        <div class="body">Censire i sistemi di IA in uso a scuola; rilevare il livello di competenza di docenti e ATA — raccomandazione esplicita della nota USR Lombardia.</div>
+        <div class="where">Template di ricognizione USR Lombardia (Google Moduli / Microsoft Forms)</div>
       </div>
       <div class="row-card">
         <span class="tag">Entro inizio A.S. 2026/27</span>
         <div class="req">Sorveglianza umana (DPIA)</div>
-        <div class="body">Aggiornare la valutazione d'impatto privacy con il supporto del DPO d'istituto.</div>
+        <div class="body">Aggiornare la valutazione d'impatto privacy con il supporto del DPO d'istituto (obbligo GDPR art. 35).</div>
         <div class="where">Modello DPIA coordinato con Linee guida MIM e Vademecum del Garante</div>
-      </div>
-      <div class="row-card">
-        <span class="tag">Settembre (avvio A.S.)</span>
-        <div class="req">Mappatura IA e competenze</div>
-        <div class="body">Censire i sistemi di IA in uso a scuola; rilevare il livello di competenza di docenti e ATA.</div>
-        <div class="where">Template di ricognizione USR Lombardia (Google Moduli / Microsoft Forms)</div>
-      </div>
-      <div class="row-card">
-        <span class="tag">Annuale (settembre)</span>
-        <div class="req">Consenso genitori under 18</div>
-        <div class="body">Raccogliere e riconfermare le autorizzazioni per i Servizi Aggiuntivi Google per gli studenti minorenni.</div>
-        <div class="where">Console Admin › Applicazioni › Servizi aggiuntivi di Google</div>
       </div>
       <div class="row-card">
         <span class="tag">Obbligo già attivo dal 2/2/2025</span>
@@ -503,6 +519,25 @@
         <div class="where">Indicatori visivi, disclaimer, loghi di provenienza sui materiali pubblicati</div>
       </div>
     </div>
+
+    <h3 style="color: var(--sky, #6fa8d8);">4b — Buone pratiche Google Workspace <span style="font-family:'DM Mono',monospace; font-size:0.7rem; color: var(--text-dim); text-transform:none; letter-spacing:0;">(non richieste dalla normativa)</span></h3>
+    <div class="warn-box" style="background: rgba(111,168,216,0.1); border-color: rgba(111,168,216,0.35); border-left-color: #6fa8d8;">Queste voci derivano dalla policy tecnica di Google per Workspace for Education, non dall'AI Act né dalla nota USR Lombardia, che non menzionano Google Workspace.</div>
+    <div class="warn-box" style="background: rgba(90,171,78,0.1); border-color: rgba(90,171,78,0.35); border-left-color: var(--green-light); color: var(--white);">✔ Verificato il 12/07/2026: l'etichetta età è già impostata correttamente su tutta la gerarchia. Nodo radice agrariomendel.it su "alcuni o tutti gli utenti minori di 18 anni"; OU docenti, personale ata e segreteria già in override su "18 e oltre"; OU studenti eredita la restrizione. Nessuna azione ulteriore necessaria su questo punto.</div>
+    <div class="card-table">
+      <div class="row-card gw">
+        <span class="tag gw">Consigliata</span>
+        <div class="req">Igiene delle integrazioni di terze parti</div>
+        <div class="body">Verificare periodicamente le app con accesso OAuth al dominio e revocare quelle non più necessarie o non verificate (vedi caso Drift/Salesforce, ago. 2025).</div>
+        <div class="where">Console Admin › Sicurezza › Controllo accessi API</div>
+      </div>
+      <div class="row-card gw">
+        <span class="tag gw">Da valutare</span>
+        <div class="req">Consenso genitori — Servizi Aggiuntivi Google</div>
+        <div class="body">Riconferma annuale prevista dai Termini di Servizio Google per gli Additional Services relativi ai minori (non da normativa italiana).</div>
+        <div class="where">Console Admin › Applicazioni › Servizi aggiuntivi di Google</div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.9rem; margin-top:14px;"><em>Nota tecnica: nei domini scuola, Google applica di default l'esperienza "under 18" a qualunque utente non esplicitamente marcato come maggiorenne — motivo per cui è comunque buona norma rendere esplicita l'etichetta su tutte le OU, come già fatto per l'IIS Mendel.</em></p>
   </section>
 
   <section id="stato">
@@ -516,53 +551,55 @@
       <li class="done"><strong>Pagina di linee guida sull'IA:</strong> pubblicata sul sito istituzionale, punto di riferimento per personale, studenti e famiglie.</li>
       <li class="done"><strong>Team Digitale e Team Buone Pratiche:</strong> costituiti e attivi, con la figura dell'Animatore Digitale come referente per l'introduzione dell'IA a scuola.</li>
       <li class="done"><strong>Amministrazione di Google Workspace:</strong> gestione centralizzata già affidata a un amministratore di dominio interno, competenza tecnica già disponibile per applicare le configurazioni previste dalla tabella di marcia.</li>
+      <li class="done"><strong>Etichetta età su Google Workspace (verificato 12/07/2026):</strong> nodo radice agrariomendel.it impostato su "alcuni o tutti gli utenti minori di 18 anni"; OU docenti, personale ata e segreteria già in override su "18 e oltre"; OU studenti eredita correttamente la restrizione. Buona pratica Google (non obbligo normativo), già in ordine.</li>
     </ul>
 
-    <h3 style="color: var(--amber);">◐ In preparazione — per l'A.S. 2026/27</h3>
+    <h3 style="color: var(--amber);">◐ In preparazione — obblighi normativi (AI Act, GDPR, nota USR)</h3>
     <ul class="status-list">
       <li class="progress"><strong>Questionari di ricognizione competenze IA:</strong> in fase di progettazione per docenti e ATA, sul modello dei template messi a disposizione dall'USR Lombardia (Google Moduli / Microsoft Forms).</li>
-      <li class="progress"><strong>Configurazione tecnica su Google Workspace:</strong> restrizioni di accesso a Gemini per età, gestione licenze, revoca delle integrazioni di terze parti non verificate — da avviare seguendo la tabella di marcia.</li>
       <li class="progress"><strong>Aggiornamento della DPIA:</strong> da redigere con il supporto del DPO d'istituto, coordinata con le Linee guida MIM e il Vademecum del Garante.</li>
-      <li class="progress"><strong>Consenso genitori per gli studenti minorenni:</strong> procedura di raccolta e riconferma annuale da impostare in apertura del nuovo anno scolastico.</li>
       <li class="progress"><strong>Formazione proporzionata ai ruoli:</strong> da programmare solo per il personale che risulterà, dalla ricognizione, effettivo "utilizzatore" (deployer) di sistemi IA — non per l'intero personale.</li>
       <li class="progress"><strong>Indicatori di trasparenza sui contenuti generati con IA:</strong> da introdurre nei materiali didattici e comunicativi in vista degli obblighi dell'art. 50, attivi dal 2 agosto 2026.</li>
     </ul>
 
+    <h3 style="color: #6fa8d8;">◐ In preparazione — buone pratiche Google Workspace <span style="font-family:'DM Mono',monospace; font-size:0.68rem; color: var(--text-dim); text-transform:none; letter-spacing:0;">(non richieste dalla normativa)</span></h3>
+    <ul class="status-list">
+      <li class="progress"><strong>Igiene delle integrazioni di terze parti:</strong> revisione periodica delle app con accesso OAuth al dominio, da avviare seguendo la tabella di marcia.</li>
+      <li class="progress"><strong>Consenso genitori per gli studenti minorenni:</strong> procedura di raccolta e riconferma annuale prevista dai Termini di Servizio Google per i Servizi Aggiuntivi, da impostare in apertura del nuovo anno scolastico.</li>
+    </ul>
+
     <div class="summary-box" style="margin-top:24px;">
-      <p style="margin-bottom:0; color: var(--text);">L'istituto ha già definito il quadro delle regole e delle responsabilità; la fase di implementazione tecnica e formativa è pianificata per l'avvio del prossimo anno scolastico. Non risultano scadenze imminenti che impongano di anticipare questo percorso: né la nota USR Lombardia né il rinvio del Digital Omnibus (che sposta al 2 dicembre 2027 gli obblighi sui sistemi ad alto rischio) richiedono un'accelerazione prima di settembre.</p>
+      <p style="margin-bottom:0; color: var(--text);">L'istituto ha già definito il quadro delle regole e delle responsabilità; la fase di implementazione tecnica e formativa è pianificata per l'avvio del prossimo anno scolastico. Non risultano scadenze imminenti che impongano di anticipare questo percorso: né la nota USR Lombardia né il rinvio del Digital Omnibus (che sposta al 2 dicembre 2027 gli obblighi sui sistemi ad alto rischio) richiedono un'accelerazione prima di settembre. Le voci relative a Google Workspace sono buone pratiche di amministrazione, distinte dagli obblighi normativi veri e propri.</p>
     </div>
   </section>
 
   <section id="formazione">
     <div class="eyebrow">Sezione 5</div>
     <h2>Percorso formativo proposto</h2>
-    <p class="muted">Modello USR Lombardia, da strutturare dopo la ricognizione delle competenze, con moduli brevi e mirati per ruolo:</p>
+    <p class="muted">Esempio di articolazione per ruolo, da adattare dopo la ricognizione delle competenze (i contenuti dei singoli moduli e la loro durata restano da definire in base alle esigenze reali emerse):</p>
     <div class="form-grid">
       <div class="form-card">
-        <span class="dur">~47 min</span>
         <h4>IA &amp; Sicurezza nella scuola</h4>
         <p>Gestione dei rischi informatici, phishing algoritmico, minimizzazione del dato nei prompt.</p>
         <span class="dest">Docenti e ATA</span>
       </div>
       <div class="form-card">
-        <span class="dur">~35 min</span>
         <h4>Utilizzo didattico dell'IA</h4>
         <p>Progettazione di lezioni, prove di valutazione autentica, prevenzione del plagio.</p>
         <span class="dest">Solo docenti</span>
       </div>
       <div class="form-card">
-        <span class="dur">~32 min</span>
         <h4>Utilizzo amministrativo dell'IA</h4>
         <p>Automazione dei flussi di segreteria, gestione sicura dei dati.</p>
         <span class="dest">ATA e DSGA</span>
       </div>
       <div class="form-card">
-        <span class="dur">~37 min</span>
         <h4>Governance dell'IA a scuola</h4>
         <p>Responsabilità del dirigente, classificazione dei rischi, coordinamento con il DPO.</p>
         <span class="dest">Dirigente e staff</span>
       </div>
     </div>
+    <p class="muted" style="font-size:0.88rem; margin-top:10px;"><em>I template di ricognizione delle competenze, questi sì forniti dall'USR Lombardia, restano lo strumento consigliato per capire quali moduli servono davvero (vedi Fonti ufficiali).</em></p>
   </section>
 
   <section id="pnrr">
@@ -587,6 +624,56 @@
         <li>Per la mappatura IA e competenze, usare i template già predisposti dall'USR Lombardia (per DSGA/ATA in formato documentale; per i docenti via Google Moduli o Microsoft Forms).</li>
         <li>Regolamento d'istituto di riferimento: <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="glossario">
+    <div class="eyebrow">Guida rapida ai termini tecnici</div>
+    <h2>Glossario</h2>
+    <p class="muted">Cosa sono, dove si trovano e un esempio pratico per ciascuna voce che compare nella tabella di marcia — utile da avere a portata di mano quando qualcuno chiede "ma questo cos'è?".</p>
+
+    <div class="gloss-grid">
+      <div class="gloss-card">
+        <h4>Indicatori visivi, disclaimer, loghi di provenienza</h4>
+        <p>Non è uno strumento da scaricare, ma una pratica da applicare voi stessi: qualsiasi segnale che avvisa chi legge/guarda che un contenuto è stato generato o modificato con IA, come richiesto dall'obbligo di trasparenza dell'art. 50 AI Act.</p>
+        <div class="where">Da inserire direttamente nei materiali che pubblicate</div>
+        <div class="example">Esempio: una dicitura in calce a una slide ("Immagine generata con IA"), una nota a piè di pagina in un documento, o un piccolo badge su un'immagine.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>Piattaforma Scuola Futura (PNRR)</h4>
+        <p>Il portale ufficiale del Ministero dell'Istruzione per la formazione del personale scolastico nell'ambito del PNRR. Qui si trovano i corsi accreditati e qui va tracciata/rendicontata la formazione se finanziata da bandi PNRR.</p>
+        <div class="where">scuolafutura.pubblica.istruzione.it</div>
+        <div class="example">Esempio: un corso di 15 ore su "Didattica digitale integrata" a cui si iscrive un docente tramite l'area riservata del portale.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>Modello DPIA (Valutazione d'Impatto sulla Protezione dei Dati)</h4>
+        <p>Documento richiesto dal GDPR (art. 35) quando un trattamento di dati personali comporta un rischio elevato per i diritti degli interessati — non è specifico dell'IA, ma l'uso di sistemi IA con dati di studenti può farvi rientrare in questo caso. Si compila con il supporto del DPO/RPD d'istituto.</p>
+        <div class="where">Il DPO d'istituto ha già un modello standard (usato ad es. per la videosorveglianza); esempi e linee guida anche nel Vademecum del Garante Privacy</div>
+        <div class="example">Esempio: prima di adottare uno strumento IA che analizza gli elaborati degli studenti, si valuta il rischio e si documentano le misure di mitigazione.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>Template di ricognizione USR Lombardia</h4>
+        <p>Questionari già pronti per censire il livello di competenza e di utilizzo dell'IA tra il personale, così da programmare una formazione mirata invece che generica.</p>
+        <div class="where">Pagina tematica USR Lombardia — Intelligenza Artificiale (link in fondo alla pagina)</div>
+        <div class="example">Esempio: un Google Modulo che chiede ai docenti quali strumenti IA usano già e con quale frequenza, da distribuire a inizio anno.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>Console Admin › Sicurezza › Controllo accessi API</h4>
+        <p>La sezione della Console di Amministrazione Google Workspace da cui si vedono tutte le applicazioni di terze parti collegate al dominio della scuola (tramite OAuth) e si possono revocare quelle non più necessarie o non verificate.</p>
+        <div class="where">admin.google.com → Sicurezza → Controllo accesso dati → Controllo accessi API</div>
+        <div class="example">Esempio: qui si sarebbe vista e potuta revocare l'integrazione "Drift" coinvolta nel data breach di agosto 2025.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>Console Admin › Applicazioni › Servizi aggiuntivi di Google</h4>
+        <p>La sezione dove si gestiscono i cosiddetti "Additional Services" di Google (Gemini incluso) e il consenso dei genitori per l'utilizzo di questi servizi da parte degli studenti minorenni.</p>
+        <div class="where">admin.google.com → App → Servizi aggiuntivi di Google</div>
+        <div class="example">Esempio: da qui si verifica se il consenso genitori per un dato servizio risulta "Confermato" o "Richiede conferma".</div>
+      </div>
     </div>
   </section>
 
