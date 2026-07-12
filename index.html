@@ -119,6 +119,18 @@
   .reg-box a { word-break: break-word; }
   .reg-box .sub { color: var(--text-dim); font-size: 0.92rem; margin-top: 6px; display: block; }
 
+  .answer-box {
+    margin-top: 28px;
+    background: linear-gradient(135deg, rgba(58,122,50,0.16), rgba(58,122,50,0.05));
+    border: 1px solid rgba(90,171,78,0.35);
+    border-radius: 6px;
+    padding: 22px 26px;
+    max-width: 62ch;
+  }
+  .answer-box .q { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-light); margin-bottom: 8px; }
+  .answer-box p { margin-bottom: 0; color: var(--white); font-size: 1.02rem; }
+  .answer-box strong { color: var(--gold-light); }
+
   /* ── NAV ── */
   nav.toc {
     position: sticky;
@@ -301,6 +313,17 @@
   }
   .summary-box li::before { background: var(--gold-light); }
 
+  .status-list li { padding-left: 34px; }
+  .status-list li::before { content: none; }
+  .status-list li.done::after,
+  .status-list li.progress::after {
+    position: absolute;
+    left: 0; top: 1px;
+    font-size: 1.1rem;
+  }
+  .status-list li.done::after { content: '✔'; color: var(--green-light); }
+  .status-list li.progress::after { content: '◐'; color: var(--amber); }
+
   /* ── FOOTER ── */
   footer {
     background: #0a0f0b;
@@ -330,6 +353,11 @@
     <h1>Google Workspace &amp; <em>AI Act</em><br>Dossier operativo per l'IIS Mendel</h1>
     <p class="lede">Tutto quello che serve alla scuola per essere in regola: inquadramento GDPR/ISO 42001, procedure di configurazione, tabella di marcia con le scadenze reali e i finanziamenti disponibili. Riferimenti normativi verificati a luglio 2026.</p>
 
+    <div class="answer-box">
+      <div class="q">In sintesi, per chi ha fretta</div>
+      <p><strong>No</strong>, non c'è un obbligo generalizzato per cui tutto il personale debba completare un corso IA entro il 2 agosto 2026. L'obbligo (art. 4 AI Act) riguarda solo chi usa/adotta sistemi di IA nella didattica o nell'organizzazione, ed è già attivo dal 2 febbraio 2025 — non è legato al 2 agosto. Il rinvio del Digital Omnibus (giugno 2026) allenta ulteriormente i tempi. Dettagli e fonti qui sotto.</p>
+    </div>
+
     <div class="reg-box">
       <strong>Regolamento d'istituto già pubblicato.</strong> Il Regolamento per l'uso dell'Intelligenza Artificiale (v1.0) dell'IIS Mendel è online qui:<br>
       <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a>
@@ -344,6 +372,7 @@
     <a href="#console">2. Console Admin</a>
     <a href="#prompt">3. Linee guida prompt</a>
     <a href="#roadmap">4. Tabella di marcia</a>
+    <a href="#stato">Stato di attuazione</a>
     <a href="#formazione">5. Formazione</a>
     <a href="#pnrr">6. Finanziamenti</a>
     <a href="#sintesi">7. Sintesi</a>
@@ -473,6 +502,34 @@
         <div class="body">Segnalare visivamente i contenuti didattici o comunicativi generati o modificati con IA.</div>
         <div class="where">Indicatori visivi, disclaimer, loghi di provenienza sui materiali pubblicati</div>
       </div>
+    </div>
+  </section>
+
+  <section id="stato">
+    <div class="eyebrow">A corredo della tabella di marcia</div>
+    <h2>Stato di attuazione</h2>
+    <p class="muted">Punto della situazione: cosa l'istituto ha già messo in atto sul piano delle regole e dell'organizzazione, e cosa sta predisponendo sul piano tecnico e formativo per l'avvio dell'A.S. 2026/27. In linea con la nota USR Lombardia: non serve un adempimento immediato e uniforme, ma un percorso proporzionato, documentato e coerente con i ruoli effettivamente coinvolti.</p>
+
+    <h3 style="color: var(--green-light);">✔ Già fatto — il quadro regolatorio e organizzativo</h3>
+    <ul class="status-list">
+      <li class="done"><strong>Regolamento per l'uso dell'Intelligenza Artificiale (v1.0):</strong> adottato e pubblicato sul sito dell'istituto, con esempi di buone pratiche allegati.</li>
+      <li class="done"><strong>Pagina di linee guida sull'IA:</strong> pubblicata sul sito istituzionale, punto di riferimento per personale, studenti e famiglie.</li>
+      <li class="done"><strong>Team Digitale e Team Buone Pratiche:</strong> costituiti e attivi, con la figura dell'Animatore Digitale come referente per l'introduzione dell'IA a scuola.</li>
+      <li class="done"><strong>Amministrazione di Google Workspace:</strong> gestione centralizzata già affidata a un amministratore di dominio interno, competenza tecnica già disponibile per applicare le configurazioni previste dalla tabella di marcia.</li>
+    </ul>
+
+    <h3 style="color: var(--amber);">◐ In preparazione — per l'A.S. 2026/27</h3>
+    <ul class="status-list">
+      <li class="progress"><strong>Questionari di ricognizione competenze IA:</strong> in fase di progettazione per docenti e ATA, sul modello dei template messi a disposizione dall'USR Lombardia (Google Moduli / Microsoft Forms).</li>
+      <li class="progress"><strong>Configurazione tecnica su Google Workspace:</strong> restrizioni di accesso a Gemini per età, gestione licenze, revoca delle integrazioni di terze parti non verificate — da avviare seguendo la tabella di marcia.</li>
+      <li class="progress"><strong>Aggiornamento della DPIA:</strong> da redigere con il supporto del DPO d'istituto, coordinata con le Linee guida MIM e il Vademecum del Garante.</li>
+      <li class="progress"><strong>Consenso genitori per gli studenti minorenni:</strong> procedura di raccolta e riconferma annuale da impostare in apertura del nuovo anno scolastico.</li>
+      <li class="progress"><strong>Formazione proporzionata ai ruoli:</strong> da programmare solo per il personale che risulterà, dalla ricognizione, effettivo "utilizzatore" (deployer) di sistemi IA — non per l'intero personale.</li>
+      <li class="progress"><strong>Indicatori di trasparenza sui contenuti generati con IA:</strong> da introdurre nei materiali didattici e comunicativi in vista degli obblighi dell'art. 50, attivi dal 2 agosto 2026.</li>
+    </ul>
+
+    <div class="summary-box" style="margin-top:24px;">
+      <p style="margin-bottom:0; color: var(--text);">L'istituto ha già definito il quadro delle regole e delle responsabilità; la fase di implementazione tecnica e formativa è pianificata per l'avvio del prossimo anno scolastico. Non risultano scadenze imminenti che impongano di anticipare questo percorso: né la nota USR Lombardia né il rinvio del Digital Omnibus (che sposta al 2 dicembre 2027 gli obblighi sui sistemi ad alto rischio) richiedono un'accelerazione prima di settembre.</p>
     </div>
   </section>
 
