@@ -456,6 +456,29 @@
   footer a:hover { color: var(--gold-light); border-color: var(--gold-light); }
   .footer-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   .footer-fine { font-size: 0.78rem; color: var(--text-dim); }
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    color: #fff;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .25s;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: scale(1.1); }
 </style>
 </head>
 <body>
@@ -1019,5 +1042,10 @@
   }
 </script>
 
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+<script>
+const btn=document.querySelector('.back-to-top');
+window.addEventListener('scroll',()=>{btn.classList.toggle('visible',window.scrollY>600)});
+</script>
 </body>
 </html>
