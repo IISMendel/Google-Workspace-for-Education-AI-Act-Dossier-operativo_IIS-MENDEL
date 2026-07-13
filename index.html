@@ -500,8 +500,7 @@
 <nav class="toc">
   <div class="toc-inner">
     <a href="#gdpr">1. GDPR &amp; ISO 42001</a>
-    <a href="#console">2. Console Admin</a>
-    <a href="#prompt">3. Linee guida prompt</a>
+    <a href="#prompt">2. Linee guida prompt</a>
     <a href="#strumenti">Strumenti IA</a>
     <a href="#roadmap">4. Tabella di marcia</a>
     <a href="#stato">Stato di attuazione</a>
@@ -521,7 +520,6 @@
     <div class="eyebrow">Sezione 1</div>
     <h2>Google Workspace sotto il profilo GDPR e ISO/IEC 42001</h2>
     <p>Per i Servizi Principali (Core Services), Google garantisce che la scuola mantenga la proprietà dei Dati del Cliente e dei prompt inseriti, e che questi contenuti non vengano usati per addestrare modelli di IA generativa né per pubblicità.</p>
-    <p class="muted">Un punto di attenzione resta però la questione della sovranità dei dati: anche quando i dati sono ospitati in data center europei (Data Residency), la controllante di Google è un soggetto statunitense soggetto a normative come la Sezione 702 del FISA e l'Executive Order 12333, che permettono in teoria l'accesso da parte delle autorità USA senza che l'interessato ne sia informato. È per questo che alcune università e centri di ricerca europei valutano alternative self-hosted come Nextcloud; per una scuola secondaria italiana non è oggi un'alternativa realistica, ma è utile saperlo per rispondere a eventuali domande di famiglie o Garante.</p>
     <p>A parziale mitigazione, Google ha certificato Google Cloud, Workspace e Gemini secondo lo standard <strong>ISO/IEC 42001</strong> (pubblicato dicembre 2023), che definisce i requisiti per un Sistema di Gestione dell'Intelligenza Artificiale (AIMS) basato sul modello Plan-Do-Check-Act.</p>
 
     <h3>Servizi IA coperti dalla certificazione</h3>
@@ -547,35 +545,6 @@
         <p style="color:var(--green-light); font-size:0.85rem;">Utile per l'accessibilità; verificare la residenza dei dati.</p>
       </div>
     </div>
-  </section>
-
-  <section id="console">
-    <div class="eyebrow">Sezione 2</div>
-    <h2>Procedure tecniche in Console Admin</h2>
-
-    <h3>2.1 — Accesso in base all'età <span style="color:var(--amber); font-family:'DM Mono',monospace; font-size:0.75rem;">PRIORITÀ IMMEDIATA</span></h3>
-    <ol>
-      <li>Console di Amministrazione › Account › Impostazioni account › Impostazioni di accesso in base all'età.</li>
-      <li>Selezionare l'Unità Organizzativa (OU) radice, che contiene l'intero dominio dell'istituto.</li>
-      <li>Alla voce "Scegli un'etichetta dell'età", selezionare "Alcuni o tutti gli utenti hanno meno di 18 anni" e salvare.</li>
-      <li>Per il personale docente e ATA: selezionare la relativa OU, impostare "All users are 18 or older" e cliccare su "Sostituisci" (Override).</li>
-    </ol>
-
-    <h3>2.2 — Abilitazione di Gemini solo per il personale maggiorenne</h3>
-    <ol>
-      <li>Console Admin › Applicazioni › Servizi aggiuntivi di Google › Gemini: impostare lo stato su ON solo per le OU con utenti maggiorenni.</li>
-      <li>Per l'accesso a Gemini dentro Google Classroom: Generative AI › Gemini for Workspace › Feature access in Classroom, attivato solo per le OU dei docenti.</li>
-      <li>Gli utenti classificati come minorenni restano esclusi automaticamente, indipendentemente da questa configurazione.</li>
-      <li>Assegnazione licenze "Gemini Education": singolarmente dalla scheda utente, oppure in massa con caricamento CSV (colonna New Licenses).</li>
-    </ol>
-
-    <h3>2.3 — Riconferma annuale del consenso (servizi aggiuntivi minori)</h3>
-    <p class="muted">Da ripetere ogni anno, in apertura di A.S.: senza la riconferma, il sistema blocca automaticamente l'accesso ai servizi per gli studenti under 18.</p>
-    <ul>
-      <li><strong>"Richiede conferma":</strong> applicazione attiva ma accesso minori provvisorio → verificare la raccolta firme genitori e confermare.</li>
-      <li><strong>"Confermato":</strong> consenso valido per 12 mesi, nessuna azione richiesta fino al rinnovo.</li>
-      <li><strong>"Blocked for users under 18":</strong> termine scaduto senza riconferma → selezionare i servizi e confermare per ripristinare l'accesso.</li>
-    </ul>
   </section>
 
   <section id="prompt">
@@ -750,7 +719,7 @@
   <section id="comefare">
     <div class="eyebrow">Dalla tabella alla pratica</div>
     <h2>Come fare, passo passo</h2>
-    <p class="muted">Ogni voce indica anche chi se ne occupa: <span class="acc-badge admin" style="text-transform:none;">Amministratore Workspace</span> per i punti che richiedono accesso alla Console Admin, <span class="acc-badge collettivo" style="text-transform:none;">Collettivo</span> per i punti organizzativi che coinvolgono Dirigenza, DPO o l'intero personale.</p>
+    <p class="muted">Guida pratica per i quattro obblighi normativi della tabella di marcia. Le procedure tecniche di Console Admin (accesso per età, Gemini, consenso genitori, integrazioni OAuth) sono in un documento separato ad uso dell'Amministratore Workspace.</p>
 
     <div class="accordion" id="acc-comefare">
       <div class="acc-item">
@@ -827,44 +796,6 @@
         </div>
       </div>
 
-      <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
-          <div class="acc-title-group">
-            <span class="acc-title">5. Igiene delle integrazioni di terze parti</span>
-            <span class="acc-badge admin">Amministratore Workspace</span>
-          </div>
-          <span class="acc-chevron">▾</span>
-        </div>
-        <div class="acc-body">
-          <ol>
-            <li>Accedi a admin.google.com con l'account amministratore.</li>
-            <li>Vai su Sicurezza › Controllo accesso ai dati › Controllo accessi API (il nome esatto del sottomenu può variare leggermente).</li>
-            <li>Scorri l'elenco delle app con accesso OAuth al dominio.</li>
-            <li>Per ciascuna, verifica: è ancora usata? È di un fornitore affidabile? Ha permessi più ampi del necessario?</li>
-            <li>Revoca l'accesso alle app non riconosciute, non più usate, o con permessi eccessivi.</li>
-            <li>Segna la data del controllo e imposta un promemoria ricorrente (consigliato: ogni 6 mesi) per ripeterlo.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
-          <div class="acc-title-group">
-            <span class="acc-title">6. Consenso genitori — Servizi Aggiuntivi Google</span>
-            <span class="acc-badge admin">Amministratore Workspace</span>
-          </div>
-          <span class="acc-chevron">▾</span>
-        </div>
-        <div class="acc-body">
-          <ol>
-            <li>Vai su admin.google.com › App › Servizi aggiuntivi di Google.</li>
-            <li>Controlla, per ogni servizio elencato, lo stato del consenso (visibile in una colonna dedicata).</li>
-            <li>Se risulta "Richiede conferma": verifica di avere raccolto le firme di consenso dei genitori (modulo cartaceo o digitale, come già fate per altri strumenti).</li>
-            <li>Una volta verificato, clicca "Conferma consenso" per quel servizio.</li>
-            <li>Il consenso resta valido 12 mesi: ripeti la procedura a ogni inizio di anno scolastico.</li>
-          </ol>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -954,13 +885,6 @@
         <div class="req">Promuovere percorsi di alfabetizzazione proporzionati ai ruoli, ai contesti d'uso e ai rischi</div>
         <div class="body">Il percorso formativo è articolato in moduli distinti per docenti, ATA/DSGA e Dirigenza/staff (vedi sezione 5), con contenuti e durata da definire dopo la ricognizione. Non è previsto un corso unico obbligatorio per tutti.</div>
         <div class="where">◐ In preparazione</div>
-      </div>
-
-      <div class="row-card">
-        <span class="tag">Richiesta 5</span>
-        <div class="req">Evitare l'equazione "AI Act = corso obbligatorio per tutti entro il 2 agosto 2026"</div>
-        <div class="body">Tutto il dossier è costruito su questa distinzione: la formazione è obbligatoria solo per chi è deployer, non per l'intero personale; il 2 agosto 2026 non è una scadenza formativa ma una data di applicazione per obblighi di trasparenza e vigilanza.</div>
-        <div class="where">✔ Recepito</div>
       </div>
 
       <div class="row-card" style="border-left: 3px solid var(--amber);">
