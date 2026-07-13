@@ -507,6 +507,7 @@
     <a href="#gdpr">1. GDPR &amp; ISO 42001</a>
     <a href="#console">2. Console Admin</a>
     <a href="#prompt">3. Linee guida prompt</a>
+    <a href="#strumenti">Strumenti IA</a>
     <a href="#roadmap">4. Tabella di marcia</a>
     <a href="#stato">Stato di attuazione</a>
     <a href="#comefare">Come fare, passo passo</a>
@@ -602,9 +603,77 @@
         <li><strong>Uso personale su account privati:</strong> non è vietato dal Regolamento, ma la nota USR Lombardia ricorda che l'utilizzo senza idonea formazione di strumenti non verificati, adottati su iniziativa personale o con utenze non istituzionali, espone a <strong>responsabilità individuale</strong>. In nessun caso vanno inseriti dati personali di studenti in strumenti IA non istituzionali.</li>
       </ul>
     </div>
-  </section>
 
-  <section id="roadmap">
+    <h3 id="strumenti">Elenco degli strumenti di IA — bozza ai sensi dell'Art. 6.3 del Regolamento</h3>
+    <p class="muted">L'Art. 6.3 del nostro Regolamento prevede la pubblicazione sul sito istituzionale di un elenco aggiornato degli strumenti IA approvati. Quella che segue è una prima ricognizione, da completare dopo la mappatura di settembre.</p>
+
+    <h3 style="font-size:1rem; color: var(--green-light);">Piattaforma istituzionale adottata dall'istituto: Google Workspace for Education (Art. 6.1)</h3>
+    <p class="muted">L'unica piattaforma IA formalmente adottata dall'IIS Mendel è Google Workspace for Education. I servizi IA che ne fanno parte sono coperti dal contratto istituzionale e dalla certificazione ISO 42001:</p>
+    <div class="card-table">
+      <div class="row-card">
+        <span class="tag">Istituzionale</span>
+        <div class="req">Gemini for Workspace</div>
+        <div class="body">Assistente IA integrato in Gmail, Documenti, Fogli, Presentazioni, Meet e Vids. I prompt restano nel dominio della scuola e non vengono utilizzati per addestrare modelli esterni.</div>
+        <div class="where">Parte di Google Workspace for Education · Rischio: limitato · Dati: protetti da contratto istituzionale</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Istituzionale</span>
+        <div class="req">Gemini for Education (app standalone)</div>
+        <div class="body">Interfaccia web/mobile per brainstorming, ricerca e studio. Funzionalità complete per maggiorenni; esperienza con guardrail aggiuntivi e risorse di AI literacy per studenti minorenni.</div>
+        <div class="where">Parte di Google Workspace for Education · Rischio: limitato · Dati: non rivisti da operatori umani</div>
+      </div>
+      <div class="row-card">
+        <span class="tag">Istituzionale</span>
+        <div class="req">NotebookLM</div>
+        <div class="body">Analisi documenti, generazione di audio overview, guide di studio e mappe concettuali a partire da fonti caricate dall'utente.</div>
+        <div class="where">Parte di Google Workspace for Education · Rischio: limitato · Dati: elaborati solo sulle fonti fornite</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem; color: var(--amber);">Strumenti NON adottati dall'istituto — utilizzati a titolo personale (Art. 6.2)</h3>
+    <p class="muted">Questi strumenti non sono stati formalmente adottati dalla scuola: sono utilizzati da singoli docenti e studenti su account personali, sotto la propria responsabilità individuale. Per ciascuno va deciso se autorizzarne l'uso a fini didattici (con le relative misure previste dall'Art. 6.2) o se mantenerli esclusivamente nella sfera personale.</p>
+    <div class="card-table">
+      <div class="row-card" style="border-left: 3px solid var(--amber);">
+        <span class="tag" style="color: var(--amber); background: var(--amber-bg);">Da formalizzare</span>
+        <div class="req">ChatGPT (OpenAI)</div>
+        <div class="body">Generazione di testi, supporto alla programmazione didattica. Se autorizzato: solo su account personali del docente, mai con dati di studenti, mai per valutazione.</div>
+        <div class="where">Fornitore: OpenAI · Rischio: da valutare · Dati: soggetti a policy del fornitore (server USA)</div>
+      </div>
+      <div class="row-card" style="border-left: 3px solid var(--amber);">
+        <span class="tag" style="color: var(--amber); background: var(--amber-bg);">Da formalizzare</span>
+        <div class="req">Claude (Anthropic)</div>
+        <div class="body">Generazione di testi, analisi di documenti, supporto alla programmazione. Stesse condizioni d'uso di ChatGPT se autorizzato.</div>
+        <div class="where">Fornitore: Anthropic · Rischio: da valutare · Dati: soggetti a policy del fornitore (server USA)</div>
+      </div>
+      <div class="row-card" style="border-left: 3px solid var(--amber);">
+        <span class="tag" style="color: var(--amber); background: var(--amber-bg);">Da formalizzare</span>
+        <div class="req">Copilot (Microsoft)</div>
+        <div class="body">Assistente IA integrato in Microsoft 365 e browser Edge. Se la scuola usa anche Microsoft 365 Education, potrebbe già essere disponibile con protezioni istituzionali.</div>
+        <div class="where">Fornitore: Microsoft · Rischio: da valutare · Dati: dipende dall'edizione (consumer vs istituzionale)</div>
+      </div>
+      <div class="row-card" style="border-left: 3px solid var(--amber);">
+        <span class="tag" style="color: var(--amber); background: var(--amber-bg);">Da formalizzare</span>
+        <div class="req">ElevenLabs</div>
+        <div class="body">Generazione vocale e sintesi text-to-speech multilingue. Utilizzato per la produzione di materiali audio per attività di listening comprehension.</div>
+        <div class="where">Fornitore: ElevenLabs Inc. · Rischio: limitato (non tratta dati studenti) · Uso: solo produzione materiali da parte del docente</div>
+      </div>
+      <div class="row-card" style="border-left: 3px solid var(--amber);">
+        <span class="tag" style="color: var(--amber); background: var(--amber-bg);">Da formalizzare</span>
+        <div class="req">Suno</div>
+        <div class="body">Generazione musicale tramite IA. Uso creativo ed extracurriculare.</div>
+        <div class="where">Fornitore: Suno Inc. · Rischio: minimo (non tratta dati personali) · Uso: progetti creativi</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem; color: var(--text-dim);">Da valutare dopo la mappatura di settembre</h3>
+    <p class="muted">La mappatura delle competenze (Richiesta 1 della nota USR) farà emergere eventuali altri strumenti in uso. Per ciascuno andrà compilata la scheda prevista dall'Art. 6.3 (fornitore, finalità, livello di rischio, misure di mitigazione) e richiesta l'autorizzazione del Dirigente. Possibili categorie:</p>
+    <ul>
+      <li>Strumenti di generazione immagini (Midjourney, DALL-E, Canva AI)</li>
+      <li>Strumenti anti-plagio con componente IA (Turnitin, Compilatio)</li>
+      <li>Strumenti di traduzione automatica (DeepL, Google Translate con funzionalità IA)</li>
+      <li>Qualsiasi altro strumento segnalato dal personale nella ricognizione</li>
+    </ul>
+  </section>
     <div class="eyebrow">Sezione 4</div>
     <h2>Tabella di marcia operativa</h2>
     <p class="muted">Divisa in due categorie ben distinte: da un lato gli obblighi normativi (AI Act, GDPR, nota USR), dall'altro le buone pratiche di amministrazione Google Workspace — consigliate ma non imposte da alcuna legge o nota ministeriale italiana.</p>
