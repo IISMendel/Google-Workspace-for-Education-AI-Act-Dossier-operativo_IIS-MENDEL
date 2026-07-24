@@ -477,6 +477,43 @@
     align-items: center;
     justify-content: center;
   }
+  /* ── CHECKLIST DI ADOZIONE ── */
+  .check-box {
+    margin-top: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 22px 26px;
+  }
+  .check-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 11px 26px;
+    margin-top: 18px;
+  }
+  .check-grid div {
+    display: flex;
+    gap: 11px;
+    align-items: baseline;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .check-grid .n {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
   .back-to-top.visible { opacity: 1; pointer-events: auto; }
   .back-to-top:hover { transform: scale(1.1); }
 </style>
@@ -572,7 +609,7 @@
       <p style="margin-bottom:14px;">Tutto quanto descritto in questo dossier si applica a <strong>qualsiasi sistema di IA</strong>, non solo a Gemini o ai servizi Google. Il nostro <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">Regolamento per l'uso dell'Intelligenza Artificiale</a> (v1.0) disciplina già la materia in modo completo. In particolare:</p>
       <ul>
         <li><strong>Strumenti integrati nelle piattaforme istituzionali</strong> (Google Workspace, Microsoft 365): considerati a rischio limitato/minimo, utilizzabili con supervisione del docente (Art. 6, comma 1 del Regolamento).</li>
-        <li><strong>Strumenti di IA esterni</strong> (ChatGPT, Copilot, Claude, Midjourney e analoghi): utilizzabili solo previa <strong>autorizzazione del Dirigente Scolastico</strong>, sentito il DPO, e a seguito di valutazione d'impatto (DPIA/FRIA) se necessario. Gli studenti non possono usarli senza la supervisione del docente, né per finalità valutative (Art. 6, comma 2).</li>
+        <li><strong>Strumenti di IA esterni</strong> (ChatGPT, Copilot, Claude, Midjourney e analoghi): utilizzabili solo previa <strong>autorizzazione del Dirigente Scolastico</strong>, sentito il DPO, e a seguito di valutazione d'impatto ove ne ricorrano i presupposti: la DPIA quando il trattamento di dati personali presenta un rischio elevato, la FRIA — distinta e prevista dall'AI Act — quando il sistema rientra fra quelli ad alto rischio dell'Allegato III. Gli studenti non possono usarli senza la supervisione del docente, né per finalità valutative (Art. 6, comma 2).</li>
         <li><strong>Elenco degli strumenti autorizzati:</strong> il Dirigente garantisce la pubblicazione sul sito istituzionale di un elenco aggiornato degli strumenti IA approvati, con scheda descrittiva (fornitore, finalità, livello di rischio, misure di mitigazione) — da predisporre per l'A.S. 2026/27 (Art. 6, comma 3).</li>
         <li><strong>Uso personale su account privati:</strong> non è vietato dal Regolamento, ma la nota USR Lombardia ricorda che l'utilizzo senza idonea formazione di strumenti non verificati, adottati su iniziativa personale o con utenze non istituzionali, espone a <strong>responsabilità individuale</strong>. In nessun caso vanno inseriti dati personali di studenti in strumenti IA non istituzionali.</li>
       </ul>
@@ -580,6 +617,13 @@
 
     <h3 id="strumenti">Elenco degli strumenti di IA — bozza ai sensi dell'Art. 6, comma 3 del Regolamento</h3>
     <p class="muted">L'Art. 6, comma 3 del nostro Regolamento prevede la pubblicazione sul sito istituzionale di un elenco aggiornato degli strumenti IA approvati. Quella che segue è una prima ricognizione, da completare dopo la mappatura di settembre.</p>
+
+    <div class="reg-box">
+      <strong>Attenzione a non confondere due registri distinti.</strong>
+      <p>Quello che segue è l'<strong>elenco degli strumenti autorizzati</strong>, secondo la denominazione dell'Art. 6, comma 3 del Regolamento: dice quali piattaforme l'Istituto ha formalmente adottato e a quali condizioni. È pubblico e si aggiorna a ogni nuova adozione.</p>
+      <p>Cosa diversa è il <strong>registro degli usi dell'IA</strong>, descritto nel Curricolo Digitale di Istituto: annota le singole attività — chi ha impiegato quale strumento, quando, con quali dati, con quale finalità e quali evidenze conservate. È ad aggiornamento continuo, costituisce allegato riservato del curricolo e viene messo a disposizione degli organi di controllo su richiesta.</p>
+      <p class="sub">Il primo risponde alla domanda «che cosa è autorizzato»; il secondo alla domanda «che cosa è stato effettivamente fatto». Servono entrambi e non si sostituiscono a vicenda.</p>
+    </div>
 
     <h3 style="font-size:1rem; color: var(--green-light);">Piattaforma istituzionale adottata dall'istituto: Google Workspace for Education (Art. 6, comma 1)</h3>
     <p class="muted">L'unica piattaforma IA formalmente adottata dall'IIS Mendel è Google Workspace for Education. I servizi IA che ne fanno parte sono coperti dal contratto istituzionale e dalla certificazione ISO 42001:</p>
@@ -635,6 +679,23 @@
       <li>Strumenti di traduzione automatica (DeepL, Google Translate con funzionalità IA)</li>
       <li>Qualsiasi altro strumento segnalato dal personale nella ricognizione</li>
     </ul>
+
+    <div class="check-box">
+      <h4>Dieci domande prima di autorizzare uno strumento</h4>
+      <p class="muted">Da compilare per ciascuno strumento che emerge dalla mappatura, prima di sottoporlo al Dirigente per l'autorizzazione ex Art. 6, comma 2. Le risposte confluiscono nella scheda descrittiva prevista dal comma 3. La scelta di uno strumento non è mai neutra: modella l'ambiente e le modalità di lavoro di chi lo usa.</p>
+      <div class="check-grid">
+        <div><span class="n">01</span><span>Chi è il fornitore del servizio?</span></div>
+        <div><span class="n">02</span><span>Quali dati raccoglie?</span></div>
+        <div><span class="n">03</span><span>Dove sono conservati?</span></div>
+        <div><span class="n">04</span><span>I dati alimentano l'addestramento dei modelli?</span></div>
+        <div><span class="n">05</span><span>Esiste una versione dedicata alle scuole?</span></div>
+        <div><span class="n">06</span><span>Quali tutele sono previste per i minori?</span></div>
+        <div><span class="n">07</span><span>Il servizio è accessibile?</span></div>
+        <div><span class="n">08</span><span>L'output è verificabile?</span></div>
+        <div><span class="n">09</span><span>Il docente mantiene il controllo del processo?</span></div>
+        <div><span class="n">10</span><span>Il costo della licenza è sostenibile nel tempo?</span></div>
+      </div>
+    </div>
   </section>
 
   <section id="roadmap">
@@ -967,6 +1028,13 @@
         <p>Documento richiesto dal GDPR (art. 35) quando un trattamento di dati personali comporta un rischio elevato per i diritti degli interessati — non è specifico dell'IA, ma l'uso di sistemi IA con dati di studenti può farvi rientrare in questo caso. Si compila con il supporto del DPO/RPD d'istituto.</p>
         <div class="where">Il DPO d'istituto ha già un modello standard (usato ad es. per la videosorveglianza); esempi e linee guida anche nel Vademecum del Garante Privacy</div>
         <div class="example">Esempio: prima di adottare uno strumento IA che analizza gli elaborati degli studenti, si valuta il rischio e si documentano le misure di mitigazione.</div>
+      </div>
+
+      <div class="gloss-card">
+        <h4>FRIA (Valutazione d'Impatto sui Diritti Fondamentali)</h4>
+        <p>Da non confondere con la DPIA. È prevista dall'AI Act, non dal GDPR, e non riguarda soltanto la protezione dei dati: considera gli effetti del sistema sui diritti delle persone nel loro complesso — non discriminazione, accesso all'istruzione, tutela dei minori. Si applica a determinate categorie di sistemi ad alto rischio fra quelli elencati nell'Allegato III, dove l'istruzione compare ripetutamente.</p>
+        <div class="where">Nessun modello ministeriale italiano al momento; si procede con il DPO sulla base del testo del Regolamento (UE) 2024/1689</div>
+        <div class="example">Nella pratica dell'Istituto la FRIA non dovrebbe servire: il Curricolo Digitale esclude in via di autolimitazione gli impieghi ad alto rischio (valutazione, ammissione, profilazione, sorveglianza in sede d'esame). Diventerebbe necessaria solo se un sistema di quel tipo fosse introdotto per obbligo normativo o imposizione di un fornitore.</div>
       </div>
 
       <div class="gloss-card">
