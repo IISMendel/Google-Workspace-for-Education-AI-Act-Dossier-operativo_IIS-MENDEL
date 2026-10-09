@@ -7,22 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1410;
-    --surface: #171e18;
-    --surface2: #1e2820;
-    --border: #2a3a2c;
-    --gold: #c9a84c;
-    --gold-light: #e0c06a;
-    --gold-dim: rgba(201,168,76,0.15);
-    --green-dark: #2d5a27;
-    --green-mid: #3a7a32;
-    --green-light: #5aab4e;
-    --text: #ece5d6;
-    --text-muted: #9bad9c;
-    --text-dim: #6c7f6d;
-    --white: #f7f2e8;
-    --amber: #d9a441;
-    --amber-bg: rgba(217,164,65,0.1);
+    --bg: #ffffff;
+    --surface: #f7f9f7;
+    --surface2: #eef4ee;
+    --border: #dbe5db;
+    --gold: #2e7d32;
+    --gold-light: #2e7d32;
+    --gold-dim: rgba(46,125,50,0.08);
+    --green-dark: #1b5e20;
+    --green-mid: #2e7d32;
+    --green-light: #2e7d32;
+    --text: #1a1a1a;
+    --text-muted: #4a544c;
+    --text-dim: #7c8880;
+    --white: #14241a;
+    --amber: #8a6d00;
+    --amber-bg: rgba(217,164,65,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,13 +41,13 @@
 
   ::selection { background: var(--gold-dim); color: var(--gold-light); }
 
-  a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.35); transition: border-color .2s, color .2s; }
-  a:hover { color: var(--white); border-color: var(--white); }
+  a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(46,125,50,0.35); transition: border-color .2s, color .2s; }
+  a:hover { color: var(--green-dark); border-color: var(--green-dark); }
 
-  /* ── HEADER ── */
+  /* ── HEADER (barra istituzionale scura, come da palette del sito) ── */
   header {
-    background: linear-gradient(160deg, #0a1a0c 0%, #0f1e10 55%, #0d1a0e 100%);
-    border-bottom: 1px solid var(--border);
+    background: linear-gradient(160deg, #133d17 0%, #1b5e20 55%, #163f19 100%);
+    border-bottom: 3px solid var(--green-light-alt, #4caf50);
     position: relative;
     overflow: hidden;
   }
@@ -56,7 +56,7 @@
     position: absolute;
     top: -70px; left: -70px;
     width: 340px; height: 340px;
-    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
   header::after {
@@ -64,7 +64,7 @@
     position: absolute;
     bottom: -90px; right: -50px;
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(45,90,39,0.14) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
   .header-inner {
@@ -78,15 +78,15 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(201,168,76,0.32);
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.32);
     border-radius: 4px;
     padding: 7px 16px;
     margin-bottom: 26px;
     font-size: 0.8rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: #eaf6e8;
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
   }
@@ -95,50 +95,52 @@
     font-weight: 700;
     font-size: clamp(2.1rem, 5vw, 3.1rem);
     line-height: 1.18;
-    color: var(--white);
+    color: #ffffff;
     margin-bottom: 20px;
   }
-  h1 em { color: var(--gold-light); font-style: italic; }
+  h1 em { color: #a5e6a0; font-style: italic; }
   .lede {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.82);
     max-width: 62ch;
     line-height: 1.7;
   }
 
   .reg-box {
+    color: rgba(255,255,255,0.88);
     margin-top: 34px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green-light);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 3px solid #7ed67a;
     border-radius: 6px;
     padding: 20px 24px;
     max-width: 62ch;
   }
-  .reg-box strong { color: var(--white); }
-  .reg-box a { word-break: break-word; }
-  .reg-box .sub { color: var(--text-dim); font-size: 0.92rem; margin-top: 6px; display: block; }
+  .reg-box strong { color: #ffffff; }
+  .reg-box a { word-break: break-word; color: #a5e6a0; border-color: rgba(165,230,160,0.5); }
+  .reg-box a:hover { color: #ffffff; border-color: #ffffff; }
+  .reg-box .sub { color: rgba(255,255,255,0.65); font-size: 0.92rem; margin-top: 6px; display: block; }
 
   .answer-box {
     margin-top: 28px;
-    background: linear-gradient(135deg, rgba(58,122,50,0.16), rgba(58,122,50,0.05));
-    border: 1px solid rgba(90,171,78,0.35);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 6px;
     padding: 22px 26px;
     max-width: 62ch;
   }
-  .answer-box .q { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-light); margin-bottom: 8px; }
-  .answer-box p { margin-bottom: 0; color: var(--white); font-size: 1.02rem; }
-  .answer-box strong { color: var(--gold-light); }
+  .answer-box .q { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a5e6a0; margin-bottom: 8px; }
+  .answer-box p { margin-bottom: 0; color: #ffffff; font-size: 1.02rem; }
+  .answer-box strong { color: #a5e6a0; }
 
-  /* ── NAV ── */
+  /* ── NAV (barra scura sticky, come da palette del sito) ── */
   nav.toc {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(15,20,16,0.92);
+    background: rgba(27,94,32,0.97);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
   .toc-inner {
     max-width: 900px;
@@ -150,11 +152,11 @@
     font-size: 0.88rem;
   }
   .toc-inner a {
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.75);
     border-bottom: none;
     white-space: nowrap;
   }
-  .toc-inner a:hover { color: var(--gold-light); }
+  .toc-inner a:hover { color: #ffffff; }
 
   /* ── MAIN ── */
   main { max-width: 900px; margin: 0 auto; padding: 56px 32px 40px; }
@@ -176,7 +178,7 @@
     color: var(--white);
     margin-bottom: 22px;
     padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--green-light);
   }
   h3 {
     font-family: 'DM Sans', sans-serif;
@@ -232,6 +234,7 @@
     display: grid;
     grid-template-columns: 150px 1fr;
     gap: 6px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .row-card .tag {
     font-family: 'DM Mono', monospace;
@@ -252,14 +255,14 @@
     margin-top: 4px;
     font-family: 'DM Mono', monospace;
     font-size: 0.82rem;
-    color: var(--green-light);
+    color: var(--green-dark);
   }
   @media (max-width: 620px) {
     .row-card { grid-template-columns: 1fr; }
     .row-card .req, .row-card .body, .row-card .where { grid-column: 1; }
   }
   .row-card.immediate { border-left: 3px solid var(--amber); }
-  .row-card.gw { border-left: 3px solid #6fa8d8; }
+  .row-card.gw { border-left: 3px solid #2b6ea8; }
   .row-card .who {
     grid-column: 2;
     margin-top: 8px;
@@ -270,7 +273,7 @@
   }
   .row-card .who::before { content: '👤 '; }
   @media (max-width: 620px) { .row-card .who { grid-column: 1; } }
-  .tag.gw { color: #a9cdea; background: rgba(111,168,216,0.14); }
+  .tag.gw { color: #1a5f8a; background: rgba(43,110,168,0.1); }
 
   .svc-grid, .form-grid {
     display: grid;
@@ -284,6 +287,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .svc-card h4, .form-card h4 {
     font-family: 'DM Sans', sans-serif;
@@ -303,11 +307,11 @@
     padding: 2px 9px;
     margin-bottom: 8px;
   }
-  .form-card .dest { font-size: 0.85rem; color: var(--green-light); }
+  .form-card .dest { font-size: 0.85rem; color: var(--green-dark); font-weight: 600; }
 
   .warn-box {
     background: var(--amber-bg);
-    border: 1px solid rgba(217,164,65,0.35);
+    border: 1px solid rgba(217,164,65,0.4);
     border-left: 3px solid var(--amber);
     border-radius: 6px;
     padding: 16px 20px;
@@ -333,7 +337,7 @@
     left: 0; top: 1px;
     font-size: 1.1rem;
   }
-  .status-list li.done::after { content: '✔'; color: var(--green-light); }
+  .status-list li.done::after { content: '✔'; color: var(--green-dark); }
   .status-list li.progress::after { content: '◐'; color: var(--amber); }
 
   .gloss-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 20px 0; }
@@ -342,6 +346,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .gloss-card h4 {
     font-family: 'Playfair Display', serif;
@@ -354,7 +359,7 @@
   .gloss-card .where {
     font-family: 'DM Mono', monospace;
     font-size: 0.82rem;
-    color: var(--green-light);
+    color: var(--green-dark);
     margin-bottom: 8px;
   }
   .gloss-card .where::before { content: '📍 '; }
@@ -374,6 +379,7 @@
     border-radius: 8px;
     margin-bottom: 12px;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .acc-header {
     display: flex;
@@ -397,7 +403,7 @@
     white-space: nowrap;
   }
   .acc-badge.admin { color: var(--gold-light); background: var(--gold-dim); }
-  .acc-badge.collettivo { color: #a9cdea; background: rgba(111,168,216,0.14); }
+  .acc-badge.collettivo { color: #1a5f8a; background: rgba(43,110,168,0.1); }
   .acc-chevron {
     color: var(--text-dim);
     font-size: 1.1rem;
@@ -437,10 +443,10 @@
     justify-content: center;
   }
 
-  /* ── FOOTER ── */
+  /* ── FOOTER (barra istituzionale scura) ── */
   footer {
-    background: #0a0f0b;
-    border-top: 1px solid var(--border);
+    background: #143c18;
+    border-top: 3px solid #4caf50;
     padding: 44px 32px 34px;
     text-align: center;
   }
@@ -448,15 +454,20 @@
   footer .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
-    color: var(--gold-light);
+    color: #a5e6a0;
     margin-bottom: 10px;
   }
-  footer p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 6px; }
-  footer a { color: var(--text-muted); border-color: var(--text-dim); }
-  footer a:hover { color: var(--gold-light); border-color: var(--gold-light); }
-  .footer-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
-  .footer-fine { font-size: 0.78rem; color: var(--text-dim); }
-  .back-to-top {
+  footer p { color: rgba(255,255,255,0.75); font-size: 0.92rem; margin-bottom: 6px; }
+  footer a { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.35); }
+  footer a:hover { color: #ffffff; border-color: #ffffff; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 18px 0; }
+  .footer-fine { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+  main .reg-box { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--green-light); color: var(--text); max-width: none; }
+  main .reg-box strong { color: var(--green-dark); }
+  main .reg-box a { color: var(--green-dark); border-color: rgba(27,94,32,0.4); }
+  main .reg-box .sub { color: var(--text-muted); }
+  main .reg-box p { margin: 10px 0 0; }
+.back-to-top {
     position: fixed;
     bottom: 32px;
     right: 32px;
@@ -468,7 +479,7 @@
     border: none;
     font-size: 1.3rem;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     opacity: 0;
     pointer-events: none;
     transition: opacity .25s, transform .25s;
@@ -490,7 +501,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--green-dark);
     margin-bottom: 6px;
   }
   .check-grid {
@@ -923,6 +934,8 @@
         <li>Il rinvio del Digital Omnibus (approvato dal Parlamento UE il 16 giugno 2026) sposta al 2 dicembre 2027 gli obblighi sui sistemi ad alto rischio (Allegato III, incluso il settore istruzione), ma non tocca gli obblighi già attivi di trasparenza (art. 50) né la parte pratica di configurazione di Google Workspace descritta sopra.</li>
         <li>Per la mappatura IA e competenze, usare i template già predisposti dall'USR Lombardia (per DSGA/ATA in formato documentale; per i docenti via Google Moduli o Microsoft Forms).</li>
         <li>Regolamento d'istituto di riferimento: <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a></li>
+      
+        <li><strong>Comunicazione GDPR Scuola (Karon srl) del 09/10/2026</strong> — «Aggiornamento checklist per l'adozione dell'IA nelle scuole», inviata alla Dirigente e al Referente Privacy. La checklist è nell'area riservata della piattaforma GDPR Scuola (non del sito web dell'istituto). Per i clienti con "Pacchetto GDPR Scuola" (DPO) comprende informativa privacy specifica per l'IA, aggiornamento del Registro dei Trattamenti, istruzioni operative per docenti/ATA e formazione; per i clienti con "Pacchetto Scuola Sicura" (Upgrade IA) comprende anche atti di indirizzo, decreti di nomina del referente, circolare sul divieto cautelativo, audit dei software, DPIA quadro e altro. La comunicazione indica "agosto 2027" come termine di adeguamento generale all'AI Act; il presente dossier, sulla base del Digital Omnibus, indica il 2 dicembre 2027 per i sistemi ad alto rischio dell'Allegato III. Da chiarire con il DPO quale pacchetto è attivo per l'istituto e a quale scadenza si riferisce.</li>
       </ul>
     </div>
   </section>
@@ -1072,6 +1085,8 @@
         <a href="https://www.mim.gov.it/web/usr-lombardia/intelligenza-artificiale" target="_blank" rel="noopener">mim.gov.it/web/usr-lombardia/intelligenza-artificiale</a></li>
         <li><strong>Regolamento IA dell'IIS Mendel (v1.0)</strong>:<br>
         <a href="https://agrariomendel.edu.it/la-scuola/le-carte/223-regolamento-per-luso-dellintelligenza-artificiale" target="_blank" rel="noopener">agrariomendel.edu.it — Regolamento per l'uso dell'IA</a></li>
+      
+        <li><strong>Comunicazione GDPR Scuola (Karon srl) del 09/10/2026</strong> — «Aggiornamento checklist per l'adozione dell'IA nelle scuole», inviata alla Dirigente e al Referente Privacy. La checklist è nell'area riservata della piattaforma GDPR Scuola (non del sito web dell'istituto). Per i clienti con "Pacchetto GDPR Scuola" (DPO) comprende informativa privacy specifica per l'IA, aggiornamento del Registro dei Trattamenti, istruzioni operative per docenti/ATA e formazione; per i clienti con "Pacchetto Scuola Sicura" (Upgrade IA) comprende anche atti di indirizzo, decreti di nomina del referente, circolare sul divieto cautelativo, audit dei software, DPIA quadro e altro. La comunicazione indica "agosto 2027" come termine di adeguamento generale all'AI Act; il presente dossier, sulla base del Digital Omnibus, indica il 2 dicembre 2027 per i sistemi ad alto rischio dell'Allegato III. Da chiarire con il DPO quale pacchetto è attivo per l'istituto e a quale scadenza si riferisce.</li>
       </ul>
     </div>
   </section>
